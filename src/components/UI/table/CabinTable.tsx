@@ -33,7 +33,7 @@ const CabinTable = function () {
         </Button>
         {openDot && (
           <DotMenu>
-            <p>Hello</p>
+            <p>Hello world</p>
           </DotMenu>
         )}
       </div>
