@@ -33,7 +33,10 @@ const CabinTable = function () {
         </Button>
         {openDot && (
           <DotMenu>
-            <p>Hello</p>
+            <div className="w-[80px] flex flex-col items-center" id="dot">
+              <button className="block w-full p-1 hover:bg-grey-100">Edit</button>
+              <button className="block w-full p-1 hover:bg-grey-100">Delete</button>
+            </div>
           </DotMenu>
         )}
       </div>

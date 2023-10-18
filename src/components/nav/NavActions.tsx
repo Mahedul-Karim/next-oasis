@@ -18,10 +18,10 @@ export default function NavActions({ to, icon: Icon, text }: Props) {
   return (
     <div
       className={`w-full transition-all py-2 rounded-md cursor-pointer group ${
-        location === to ? "bg-grey-100" : "hover:bg-grey-100"
+        location === to ? "400px:bg-grey-100" : "400px:hover:bg-grey-100"
       }`}
     >
-      <Link href={to} className="flex justify-center md:justify-normal px-6 items-center gap-4">
+      <Link href={to} className="flex justify-center 1000px:justify-normal px-6 items-center gap-4">
         <span
           className={`text-grey-600 transition-all ${
             location === to
@@ -34,7 +34,7 @@ export default function NavActions({ to, icon: Icon, text }: Props) {
         <span
           className={`text-grey-600 transition-all text-lg ${
             location === to ? "!text-grey-800" : "hover:text-grey-800"
-          } hidden md:block`}
+          } hidden 1000px:block`}
         >
           {text}
         </span>

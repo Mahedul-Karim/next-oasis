@@ -1,6 +1,6 @@
 "use client";
 
-import Filter from "@/components/UI/Filter";
+import Filter from "@/components/UI/action/Filter";
 import Heading from "@/components/UI/Heading";
 
 const options = [

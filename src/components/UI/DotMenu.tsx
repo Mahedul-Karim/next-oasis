@@ -8,7 +8,7 @@ type Props = {
 
 const DotMenu: React.FC<Props> = function ({ children }) {
   return (
-    <div className="absolute z-10 bg-grey-0 shadow-lg top-[35px] right-[12px] p-3 rounded-md w-max flex flex-col">
+    <div className="absolute z-[9999] bg-grey-0 shadow-lg top-[35px] right-[12px] p-3 rounded-md w-max flex flex-col">
       {children}
     </div>
   );

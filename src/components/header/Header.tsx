@@ -13,8 +13,8 @@ export default function Header() {
         <img
           src={
             !isDarkMode
-              ? "assets/img/logo-light.png"
-              : "assets/img/logo-dark.png"
+              ? "/assets/img/logo-light.png"
+              : "/assets/img/logo-dark.png"
           }
           alt="Logo"
           className="w-[120px] h-[80px] object-contain"

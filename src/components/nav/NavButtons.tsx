@@ -4,12 +4,15 @@ import { BsMoon, BsSun } from "react-icons/bs";
 import { BiLogIn } from "react-icons/bi";
 import { useCtx } from "@/context/ContextProvider";
 import Button from "../UI/button/Button";
+import { useRouter } from "next/navigation";
 
 const NavButtons = function () {
   const { isDarkMode, setIsDarkMode } = useCtx();
+  const router = useRouter();
+
   return (
     <div className="flex items-center justify-between flex-col sm:flex-row">
-      <Button nav={true}>
+      <Button nav={true} onClick={()=>router.push('/account')}>
         <AiOutlineUser className="w-[20px] h-[20px]" />
       </Button>
       <Button

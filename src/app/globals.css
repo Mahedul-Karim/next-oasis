@@ -31,6 +31,9 @@
   --color-red-100: #fee2e2;
   --color-red-700: #b91c1c;
   --color-red-800: #991b1b;
+
+  --backdrop-color: rgba(255, 255, 255, 0.1);
+  --text-color:rgb(224, 231, 255);
 }
 
 :root.dark {
@@ -60,6 +63,9 @@
   --color-red-100: #fee2e2;
   --color-red-700: #b91c1c;
   --color-red-800: #991b1b;
+
+  --backdrop-color: rgba(0, 0, 0, 0.3);
+  --text-color:rgb(224, 231, 255);
 }
 
 *,
@@ -72,23 +78,40 @@ html {
   font-size: 96.5%;
 }
 
-#main::-webkit-scrollbar {
+#main::-webkit-scrollbar,
+#modal::-webkit-scrollbar {
   width: 10px;
   /* display: none; */
 }
-#table::-webkit-scrollbar {
+#table::-webkit-scrollbar,
+#modal::-webkit-scrollbar {
   display: none;
 }
 
-#main::-webkit-scrollbar-track {
+#main::-webkit-scrollbar-track,
+#modal::-webkit-scrollbar {
   background-color: var(--color-grey-0);
 }
 
-#main::-webkit-scrollbar-thumb {
+#main::-webkit-scrollbar-thumb,
+#modal::-webkit-scrollbar {
   background-color: var(--color-indigo-700);
   border-radius: 10px;
 }
 
-#table > *:not(:last-child){
+#table > *:not(:last-child) {
   border-bottom: 1px solid var(--color-grey-200);
+}
+#dot > *:not(:last-child) {
+  border-bottom: 1px solid var(--color-grey-200);
+}
+
+input[type="file"]::-webkit-file-upload-button{
+  background:#4f46e5;
+  color:#eef2ff;
+  border:0;
+  outline:none;
+  border-radius: 4px;
+  cursor:pointer;
+  padding:12px 8px;
 }

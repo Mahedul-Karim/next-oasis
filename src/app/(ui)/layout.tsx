@@ -1,8 +1,9 @@
 import ContextProvider from "@/context/ContextProvider";
-import "./globals.css";
+import '@/app/globals.css'; 
 import type { Metadata } from "next";
 import Header from "@/components/header/Header";
 import SideNav from "@/components/nav/SideNav";
+import BottomNav from "@/components/nav/BottomNav";
 
 export const metadata: Metadata = {
   title: "The wild oasis",
@@ -19,12 +20,13 @@ export default function RootLayout({
       <body className="font-poppins text-grey-700 min-h-screen">
         <ContextProvider>
           <Header />
-          <main className="grid grid-cols-[78px_1fr] md:grid-cols-[250px_1fr] h-[calc(100vh_-_105px)]">
+          <main className="grid grid-cols-1 400px:grid-cols-[78px_1fr] 1000px:grid-cols-[250px_1fr] h-[calc(100vh_-_105px)]">
             <SideNav />
-            <div className="bg-grey-100 overflow-y-scroll overflow-x-hidden px-10 py-9" id="main">
+            <div className="bg-grey-100 overflow-y-scroll overflow-x-hidden px-5 sm:px-10 py-9" id="main">
               {children}
             </div>
           </main>
+          <BottomNav />
         </ContextProvider>
       </body>
     </html>

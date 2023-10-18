@@ -26,7 +26,7 @@ const Filter: React.FC<Props> = function ({ queryValue, options }) {
   }
 
   return (
-    <div className="bg-grey-0 border-[1px] border-solid border-grey-100 rounded-md p-1 shadow-sm mt-2 sm:mt-0 flex gap-1 flex-col sm:flex-row">
+    <div className="bg-grey-0 border-[1px] border-solid border-grey-100 rounded-md p-1 shadow-sm mt-2 md:mt-0 flex gap-1 flex-col md:flex-row">
       {options?.map((op) => (
         <button
           className={`p-1 rounded-md  ${

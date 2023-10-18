@@ -31,7 +31,7 @@ const sideNav = [
 
 export default function SideNav() {
   return (
-    <nav className="bg-grey-0 border-r-grey-200 border-r-[1px] border-solid flex flex-col gap-2 px-4 py-6">
+    <nav className="hidden bg-grey-0 border-r-grey-200 border-r-[1px] border-solid 400px:flex flex-col gap-2 px-4 py-6">
       {sideNav.map((side) => (
         <NavActions
           to={side.to}

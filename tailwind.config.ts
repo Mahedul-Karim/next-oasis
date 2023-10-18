@@ -5,7 +5,7 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/**/*.{js,ts,jsx,tsx,mdx}"
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     colors: {
@@ -39,9 +39,11 @@ const config: Config = {
       "silver-700": "var(--color-silver-700)",
       "indigo-100": "var(--color-indigo-100)",
       "indigo-700": "var(--color-indigo-700)",
+      "backdrop":"var(--backdrop-color)",
       "red-100": "var(--color-red-100)",
       "red-700": "var(--color-red-700)",
       "red-800": "var(--color-red-800)",
+      "color-text":"var(--text-color)"
     },
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],
@@ -52,6 +54,11 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      screens: {
+        "400px": "400px",
+        "800px": "800px",
+        "1000px": "1000px",
       },
     },
   },

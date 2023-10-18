@@ -1,39 +1,21 @@
-import Filter from "../UI/Filter";
+import Filter from "../UI/action/Filter";
+import MobileFilter from "../UI/action/MobileFilter";
 import Heading from "../UI/Heading";
 import Table from "../UI/table/Table";
 import TableBody from "../UI/table/TableBody";
 import TableHead from "../UI/table/TableHead";
-
-const options = [
-  {
-    id: 0,
-    value: "all",
-    label: "All",
-  },
-  {
-    id: 1,
-    value: "unconfirmed",
-    label: "Unconfirmed",
-  },
-  {
-    id: 2,
-    value: "checked-in",
-    label: "Checked-in",
-  },
-  {
-    id: 3,
-    value: "checked-out",
-    label: "Checked-out",
-  },
-];
+import { bookingFilter } from "@/util/base";
 
 const Bookings = function () {
   return (
     <>
       <Heading title={"All bookings"}>
-        <div>
-          <Filter queryValue={"status"} options={options} />
+        <div className="hidden md:flex items-center gap-2">
+          <Filter queryValue={"status"} options={bookingFilter} />
         </div>
+        <MobileFilter>
+          <Filter queryValue={"status"} options={bookingFilter} />
+        </MobileFilter>
       </Heading>
       <Table>
         <TableHead>
@@ -43,9 +25,9 @@ const Bookings = function () {
           <div>Status</div>
           <div>Amount</div>
         </TableHead>
-        <TableBody type={'booking'}/>
-        <TableBody type={'booking'}/>
-        <TableBody type={'booking'}/>
+        <TableBody type={"booking"} />
+        <TableBody type={"booking"} />
+        <TableBody type={"booking"} />
       </Table>
     </>
   );
