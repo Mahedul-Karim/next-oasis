@@ -1,3 +1,5 @@
+export const API_URL = "https://server-oasis.vercel.app/api/v1";
+
 export const cabinFilter = [
   {
     id: 1,
@@ -39,7 +41,7 @@ export const cabinSort = [
   },
 ];
 
-export const bookingFilter=[
+export const bookingFilter = [
   {
     id: 0,
     value: "all",

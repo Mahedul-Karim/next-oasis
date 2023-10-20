@@ -2,12 +2,18 @@
 
 type Props = {
   children: React.ReactNode;
-  onClick?:()=>void;
+  onClick?: () => void;
+  classes?: string;
 };
 
-const ButtonForm: React.FC<Props> = function ({ children,onClick }) {
+const ButtonForm: React.FC<Props> = function ({ children, onClick, classes }) {
   return (
-    <button className="bg-primary-600 text-primary-50 p-3 rounded-md w-max mt-2" onClick={onClick}>
+    <button
+      className={`bg-primary-600 text-primary-50 p-3 rounded-md mt-2 ${
+        classes ? classes : "w-max"
+      }`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

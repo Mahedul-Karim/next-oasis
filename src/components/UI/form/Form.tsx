@@ -1,12 +1,15 @@
 "use client";
 
+import { FormEvent, FormEventHandler } from "react";
+
 type Props = {
   children: React.ReactNode;
-  onSubmit?: () => void;
+  onSubmit?: FormEventHandler<HTMLFormElement>;
+  classes?:string;
 };
 
-const Form: React.FC<Props> = function ({ children, onSubmit }) {
-  return <form onSubmit={onSubmit}>{children}</form>;
+const Form: React.FC<Props> = function ({ children, onSubmit,classes }) {
+  return <form onSubmit={onSubmit} className={classes}>{children}</form>;
 };
 
 export default Form;

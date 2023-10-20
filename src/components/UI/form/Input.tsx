@@ -1,20 +1,30 @@
 "use client";
 
+import { FieldError } from "react-hook-form";
+
 type Props = {
   type: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  name: string;
-  value?: string | number;
+  name?: string;
   disabled?: boolean;
+  error?: any;
+  onChange?:any;
+  onBlur?:any;
+  id?:string;
+  value?:string;
+  register?:any;
 };
 
 const Input: React.FC<Props> = function ({
   type,
-  onChange,
   name,
-  value,
   disabled,
+  error,
+  onChange,
+  onBlur,
+  id,
+  register
 }) {
+  
   return (
     <>
       {type !== "textarea" ? (
@@ -23,20 +33,18 @@ const Input: React.FC<Props> = function ({
           className={`${
             type === "file" ? "" : "border-[1px] border-solid border-grey-300"
           } bg-grey-0 py-[8px] px-[12px] rounded-md focus:outline-none disabled:bg-grey-300`}
-          onChange={onChange}
-          name={name}
-          value={value}
           disabled={disabled}
+          {...register}
+          id={id}
         />
       ) : (
         <textarea
           className="border-[1px] border-solid border-grey-300 bg-grey-0 py-[8px] px-[12px] rounded-md focus:outline-none"
-          name={name}
-          value={value}
           disabled={disabled}
-        ></textarea>
+          {...register}
+        />
       )}
-      <span className="text-red-700">This field is required</span>
+      {error && <span className="text-red-700">{error}</span>}
     </>
   );
 };
