@@ -79,7 +79,8 @@ html {
 }
 
 #main::-webkit-scrollbar,
-#modal::-webkit-scrollbar {
+#modal::-webkit-scrollbar,
+#activity::-webkit-scrollbar {
   width: 10px;
   /* display: none; */
 }
@@ -89,12 +90,12 @@ html {
 }
 
 #main::-webkit-scrollbar-track,
-#modal::-webkit-scrollbar {
+#activity::-webkit-scrollbar-track {
   background-color: var(--color-grey-0);
 }
 
 #main::-webkit-scrollbar-thumb,
-#modal::-webkit-scrollbar {
+#activity::-webkit-scrollbar-thumb {
   background-color: var(--color-indigo-700);
   border-radius: 10px;
 }
@@ -119,7 +120,7 @@ input[type="file"]::-webkit-file-upload-button{
 .spinner{
   margin: 4.8rem auto;
 
-  width: 6.4rem;
+  width: 64px;
   aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(farthest-side, #4f46e5 94%, #0000)

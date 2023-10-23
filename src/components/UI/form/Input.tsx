@@ -12,6 +12,7 @@ type Props = {
   id?:string;
   value?:string;
   register?:any;
+  placeholder?:string;
 };
 
 const Input: React.FC<Props> = function ({
@@ -22,7 +23,8 @@ const Input: React.FC<Props> = function ({
   onChange,
   onBlur,
   id,
-  register
+  register,
+  placeholder
 }) {
   
   return (
@@ -36,6 +38,7 @@ const Input: React.FC<Props> = function ({
           disabled={disabled}
           {...register}
           id={id}
+          placeholder={placeholder}
         />
       ) : (
         <textarea

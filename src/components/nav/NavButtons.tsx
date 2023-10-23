@@ -5,10 +5,18 @@ import { BiLogIn } from "react-icons/bi";
 import { useCtx } from "@/context/ContextProvider";
 import Button from "../UI/button/Button";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const NavButtons = function () {
   const { isDarkMode, setIsDarkMode } = useCtx();
   const router = useRouter();
+
+
+  const handleLogout =()=>{
+    toast.success('Logging out...');
+    localStorage.removeItem('oasisUser');
+    router.push('/login')
+  }
 
   return (
     <div className="flex items-center justify-between flex-col sm:flex-row">
@@ -25,7 +33,7 @@ const NavButtons = function () {
           <BsSun className="w-[20px] h-[20px]" />
         )}
       </Button>
-      <Button nav={true}>
+      <Button nav={true} onClick={handleLogout}>
         <BiLogIn className="w-[20px] h-[20px]" />
       </Button>
     </div>

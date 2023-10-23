@@ -6,7 +6,7 @@ import Heading from "../UI/Heading";
 import Table from "../UI/table/Table";
 import TableBody from "../UI/table/TableBody";
 import TableHead from "../UI/table/TableHead";
-import { cabinFilter, cabinSort } from "@/util/base";
+import { DATA_PER_PAGE, cabinFilter, cabinSort } from "@/util/base";
 import Pagination from "../UI/action/Pagination";
 import MobileFilter from "../UI/action/MobileFilter";
 import ButtonForm from "../UI/button/ButtonForm";
@@ -30,11 +30,11 @@ const Cabins = function () {
 
   const activeParams = searchParams.get("discount") || "all";
   const sortedParams = searchParams.get("sortBy") || "name-asc";
+  const paginate = Number(searchParams.get("page")) || 1;
 
+  const [sortValue, direction]: Array<any> = sortedParams.split("-");
 
-  const [sortValue,direction]:Array<any>=sortedParams.split('-');
-
-  let filteredData;
+  let filteredData:Array<Cabins>=[];
 
   if (activeParams === "all") {
     filteredData = cabinData;
@@ -46,14 +46,19 @@ const Cabins = function () {
     );
   }
   if (activeParams === "no-discount") {
-    filteredData = cabinData?.filter(
-      (data) => data.discount === 0
-    );
+    filteredData = cabinData?.filter((data) => data.discount === 0);
   }
 
-  const modifier= direction === 'asc' ? 1 : -1;
+  const modifier = direction === "asc" ? 1 : -1;
 
-  const sortedData=filteredData?.sort((a,b)=>(a[sortValue]-b[sortValue])*modifier)
+  const totalPage = Math.ceil(filteredData?.length / 10);
+
+  const nextPage = (paginate - 1) * 10;
+  const prevPage = paginate === totalPage ? filteredData?.length : paginate * 10;
+
+  const sortedData = filteredData
+    ?.sort((a, b) => (a[sortValue] - b[sortValue]) * modifier)
+    .slice(nextPage, prevPage);
 
   if (isCabinLoading) {
     return <Spinner />;
@@ -82,6 +87,7 @@ const Cabins = function () {
         {sortedData?.map((cabin) => (
           <TableBody type={"cabin"} cabin={cabin} key={cabin._id} />
         ))}
+        <Pagination data={filteredData as Cabins[]} />
       </Table>
       <div className="mb-5">
         <ButtonForm onClick={() => setOpenForm(true)}>Add new cabin</ButtonForm>

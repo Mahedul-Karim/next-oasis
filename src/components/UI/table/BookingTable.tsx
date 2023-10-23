@@ -5,14 +5,20 @@ import Button from "../button/Button";
 import DotMenu from "../DotMenu";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { formatCurrency, getDateDistanceFromToday } from "@/util/helpers";
 
-const BookingTable = function () {
+import { format, isToday } from "date-fns";
 
+type BookingData = {
+  data: Bookings;
+};
+
+const BookingTable = function ({ data }: BookingData) {
   const [openDot, setOpenDot] = useState(false);
 
   const router = useRouter();
 
-  const status: string = "checked-out";
+  const status: string = data.status;
 
   const setStatus = function () {
     if (status === "unconfirmed") {
@@ -40,21 +46,30 @@ const BookingTable = function () {
 
   return (
     <>
-      <div className="text-sm font-[600]">007</div>
-      <div className="flex flex-col gap-1">
-        <h4 className="text-sm font-[600] capitalize">Nina Williams</h4>
-        <p className="!text-[13px]">nina@gmail.con</p>
-      </div>
+      <div className="text-sm font-[600]">{data?.cabinId.name}</div>
       <div className="flex flex-col gap-1">
         <h4 className="text-sm font-[600] capitalize">
-          3 months ago
+          {data?.guestId?.fullName}
         </h4>
-        <p className="!text-[13px]">Jul 10 2023 — Jul 20 2023</p>
+        <p className="!text-[13px]">{data?.guestId?.email}</p>
+      </div>
+      <div className="flex flex-col gap-1 items-center">
+        <h4 className="text-sm font-[600] capitalize">
+          {isToday(new Date(data?.startDate))
+            ? "Today"
+            : getDateDistanceFromToday(data?.startDate)}
+        </h4>
+        <p className="!text-[13px]">
+          {format(new Date(data.startDate), "MMM dd yyyy")} &mdash;{" "}
+          {format(new Date(data.endDate), "MMM dd yyyy")}
+        </p>
       </div>
 
       {setStatus()}
 
-      <div className="font-[500]">$6,050.00</div>
+      <div className="font-[500]">
+        {formatCurrency(data.cabinId.regularPrice)}
+      </div>
       <div className="relative">
         <Button onClick={() => setOpenDot((prev) => !prev)}>
           <BsThreeDotsVertical size={20} />
@@ -62,8 +77,17 @@ const BookingTable = function () {
         {openDot && (
           <DotMenu>
             <div className="w-max flex flex-col items-center" id="dot">
-              <button className="block w-full p-2 hover:bg-grey-100" onClick={()=>router.push('/bookings/1')}>See details</button>
-              <button className="block w-full p-2 hover:bg-grey-100">Delete</button>
+              {status !== "checked-out" && (
+                <button
+                  className="block w-full p-2 hover:bg-grey-100"
+                  onClick={() => router.push(`/bookings/${data._id}`)}
+                >
+                  See details
+                </button>
+              )}
+              <button className="block w-full p-2 hover:bg-grey-100">
+                Delete
+              </button>
             </div>
           </DotMenu>
         )}

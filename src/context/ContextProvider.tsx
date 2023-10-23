@@ -43,6 +43,13 @@ const ContextProvider: React.FC<Props> = function ({ children }) {
     }
   }, [isDarkMode]);
 
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("oasisUser") as string)) {
+      //@ts-ignore
+      setUser(JSON.parse(localStorage.getItem("oasisUser")));
+    }
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <Context.Provider value={{ isDarkMode, setIsDarkMode, user, setUser }}>

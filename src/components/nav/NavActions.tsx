@@ -21,7 +21,7 @@ export default function NavActions({ to, icon: Icon, text }: Props) {
         location === to ? "400px:bg-grey-100" : "400px:hover:bg-grey-100"
       }`}
     >
-      <Link href={to} className="flex justify-center 1000px:justify-normal px-6 items-center gap-4">
+      <Link href={to} className="flex justify-center 1000px:justify-normal px-6 items-center gap-4" prefetch={false}>
         <span
           className={`text-grey-600 transition-all ${
             location === to

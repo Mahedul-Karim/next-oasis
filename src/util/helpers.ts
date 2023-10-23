@@ -1,3 +1,5 @@
+import { formatDistance,parseISO } from "date-fns";
+
 type Options = {
   end?: string;
 };
@@ -18,3 +20,10 @@ export const getToday = function (options: Options = {}) {
   }
   return today.toISOString();
 };
+
+export const getDateDistanceFromToday=(date:string)=>{
+  const distance = formatDistance(parseISO(date),new Date(),{
+    addSuffix:true
+  }).replace('about','');
+  return distance;
+}

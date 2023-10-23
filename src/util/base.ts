@@ -1,5 +1,5 @@
 export const API_URL = "https://server-oasis.vercel.app/api/v1";
-
+export const DATA_PER_PAGE=10;
 export const cabinFilter = [
   {
     id: 1,
